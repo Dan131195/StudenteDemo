@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Student>
+
+<h2>Lista Studenti</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var studente in Model)
+        {
+            <tr>
+                <td>@studente.Nome</td>
+                <td>@studente.Cognome</td>
+                <td>
+                    <button class="btn btn-info" onclick="CaricaDettagli(@studente.Id)">Dettagli</button>
+                    <button class="btn btn-warning" onclick="CaricaModifica(@studente.Id)">Modifica</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="dettagliModal"></div>
+
+<script>
+    function CaricaDettagli(id) {
+        $.get('/Studente/Dettagli/' + id, function(data) {
+            $('#dettagliModal').html(data);
+        });
+    }
+    function CaricaModifica(id) {
+        $.get('/Studente/Modifica/' + id, function(data) {
+            $('#dettagliModal').html(data);
+        });
+    }
+</script>
