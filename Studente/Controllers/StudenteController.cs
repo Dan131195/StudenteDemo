@@ -26,22 +26,5 @@ namespace Studente.Controllers
             return PartialView("_Dettagli", studente);
         }
 
-        public async Task<IActionResult> Modifica(int id)
-        {
-            var studente = await _studenteService.GetStudenteByIdAsync(id);
-            if (studente == null) return NotFound();
-            return PartialView("_Modifica", studente);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Modifica(Student studente)
-        {
-            if (ModelState.IsValid)
-            {
-                await _studenteService.UpdateStudenteAsync(studente);
-                return PartialView("_Dettagli", studente);
-            }
-            return PartialView("_Modifica", studente);
-        }
     }
 }

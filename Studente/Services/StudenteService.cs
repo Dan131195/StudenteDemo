@@ -22,10 +22,5 @@ namespace Studente.Services
             return await _context.Studenti.FindAsync(id);
         }
 
-        public async Task UpdateStudenteAsync(Student studente)
-        {
-            _context.Update(studente);
-            await _context.SaveChangesAsync();
-        }
     }
 }

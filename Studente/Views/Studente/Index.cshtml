@@ -17,7 +17,6 @@
                 <td>@studente.Cognome</td>
                 <td>
                     <button class="btn btn-info" onclick="CaricaDettagli(@studente.Id)">Dettagli</button>
-                    <button class="btn btn-warning" onclick="CaricaModifica(@studente.Id)">Modifica</button>
                 </td>
             </tr>
         }
@@ -27,14 +26,16 @@
 <div id="dettagliModal"></div>
 
 <script>
-    function CaricaDettagli(id) {
-        $.get('/Studente/Dettagli/' + id, function(data) {
-            $('#dettagliModal').html(data);
-        });
-    }
-    function CaricaModifica(id) {
-        $.get('/Studente/Modifica/' + id, function(data) {
-            $('#dettagliModal').html(data);
-        });
+    async function CaricaDettagli(id) {
+        try {
+            let response = await fetch(`/Studente/Dettagli/${id}`);
+            if (!response.ok) {
+                throw new Error('Errore nel caricamento dei dettagli');
+            }
+            let data = await response.text();
+            document.getElementById('dettagliModal').innerHTML = data;
+        } catch (error) {
+            console.error('Errore:', error);
+        }
     }
 </script>
