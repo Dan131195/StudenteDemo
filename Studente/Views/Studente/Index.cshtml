@@ -12,7 +12,7 @@
     <tbody>
         @foreach (var studente in Model)
         {
-            <tr> 
+            <tr>
                 <td>@studente.Nome</td>
                 <td>@studente.Cognome</td>
                 <td>
@@ -26,6 +26,7 @@
 <div id="dettagliModal"></div>
 
 <script>
+
     async function CaricaDettagli(id) {
         try {
             let response = await fetch(`/Studente/Dettagli/${id}`);
@@ -38,4 +39,14 @@
             console.error('Errore:', error);
         }
     }
+
+    async function ModificaStudente() {
+        try {
+
+        } catch (error) {
+            console.error('Error: ', error)
+        }
+
+    }
+
 </script>
