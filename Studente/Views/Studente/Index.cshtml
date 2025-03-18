@@ -1,31 +1,42 @@
 ﻿@model List<Student>
 
-<h2>Lista Studenti</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Cognome</th>
-            <th>Azioni</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var studente in Model)
-        {
-            <tr> 
-                <td>@studente.Nome</td>
-                <td>@studente.Cognome</td>
-                <td>
-                    <button class="btn btn-info" onclick="CaricaDettagli(@studente.Id)">Dettagli</button>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<h2 class="text-center mb-4">Lista Studenti</h2>
+<div class="container">
+    <div class="row mb-3">
+        <!-- Intestazioni delle colonne -->
+        <div class="col-4 fw-bold">Nome</div>
+        <div class="col-4 fw-bold">Cognome</div>
+        <div class="col-4 fw-bold text-center">Azioni</div>
+    </div>
+
+    @foreach (var studente in Model)
+    {
+        <div class="row mb-3 align-items-center py-1">
+            <!-- Colonna Nome -->
+            <div class="col-4">@studente.Nome</div>
+            <!-- Colonna Cognome -->
+            <div class="col-4">@studente.Cognome</div>
+            <!-- Colonna Azioni -->
+            <div class="col-4 text-center">
+                <button class="btn btn-primary btn-sm" onclick="CaricaDettagli(@studente.Id)">
+                    <i class="bi bi-eye"></i> 
+                </button>
+                <button class="btn btn-warning btn-sm" onclick="">
+                    <i class="bi bi-pencil"></i> 
+                </button>
+                <button class="btn btn-danger btn-sm" onclick="">
+                    <i class="bi bi-trash"></i> 
+                </button>
+            </div>
+        </div>
+        <hr />
+    }
+</div>
 
 <div id="dettagliModal"></div>
 
 <script>
+
     async function CaricaDettagli(id) {
         try {
             let response = await fetch(`/Studente/Dettagli/${id}`);
@@ -34,8 +45,13 @@
             }
             let data = await response.text();
             document.getElementById('dettagliModal').innerHTML = data;
+
+            // Aggiungi questa riga per aprire automaticamente la modale
+            var dettagliModal = new bootstrap.Modal(document.getElementById('detagliModal'));
+            dettagliModal.show();
         } catch (error) {
             console.error('Errore:', error);
         }
     }
+
 </script>

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Studente.Models;
 using Studente.Services;
 
 namespace Studente.Controllers

@@ -1,8 +1,20 @@
 ﻿@model Student
 
-<div>
-    <h3>Dettagli Studente</h3>
-    <p>Nome: @Model.Nome</p>
-    <p>Cognome: @Model.Cognome</p>
-    <p>Email: @Model.Email</p>
+<div class="modal fade" id="detagliModal" tabindex="-1" aria-labelledby="detagliModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detagliModalLabel">Dettagli Studente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Nome:</strong> @Model.Nome</p>
+                <p><strong>Cognome:</strong> @Model.Cognome</p>
+                <p><strong>Email:</strong> @Model.Email</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+            </div>
+        </div>
+    </div>
 </div>
