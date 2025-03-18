@@ -19,19 +19,20 @@
             <!-- Colonna Azioni -->
             <div class="col-4 text-center">
                 <button class="btn btn-primary btn-sm" onclick="CaricaDettagli(@studente.Id)">
-                    <i class="bi bi-eye"></i> 
+                    <i class="bi bi-eye"></i>
                 </button>
                 <button class="btn btn-warning btn-sm" onclick="">
-                    <i class="bi bi-pencil"></i> 
+                    <i class="bi bi-pencil"></i>
                 </button>
                 <button class="btn btn-danger btn-sm" onclick="">
-                    <i class="bi bi-trash"></i> 
+                    <i class="bi bi-trash"></i>
                 </button>
             </div>
         </div>
         <hr />
     }
 </div>
+
 
 <div id="dettagliModal"></div>
 
@@ -46,7 +47,6 @@
             let data = await response.text();
             document.getElementById('dettagliModal').innerHTML = data;
 
-            // Aggiungi questa riga per aprire automaticamente la modale
             var dettagliModal = new bootstrap.Modal(document.getElementById('detagliModal'));
             dettagliModal.show();
         } catch (error) {
